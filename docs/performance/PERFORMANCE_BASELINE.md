@@ -13,7 +13,7 @@ Pop-Location
 
 $env:RUN_PERF_BASELINE = "1"
 $env:PERF_BASELINE_JSON = ".tmp\performance-baseline-frontend.json"
-node scripts\run-bun.mjs run test -- frontend/tests/performance-baseline.test.tsx
+bun run test -- frontend/tests/performance-baseline.test.tsx
 ```
 
 Generated JSON output stays under `.tmp/` and is not committed.

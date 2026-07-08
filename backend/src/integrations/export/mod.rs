@@ -11,7 +11,7 @@ use crate::{
     store::InventoryDb,
 };
 
-pub(crate) const DEFAULT_EXCEL_EXPORT_FILENAME: &str = "TE_Component_Inventory_Export.xlsx";
+pub(crate) const DEFAULT_EXCEL_EXPORT_FILENAME: &str = "TE_Parts_Inventory_Export.xlsx";
 
 #[derive(Debug, Serialize)]
 #[serde(rename_all = "camelCase")]

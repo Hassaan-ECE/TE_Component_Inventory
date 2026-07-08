@@ -4,9 +4,9 @@
   "version": "0.1.0",
   "identifier": "com.te.lab.components.inventory",
   "build": {
-    "beforeDevCommand": "node node_modules/vite/bin/vite.js --config frontend/vite.config.ts",
+    "beforeDevCommand": "bun node_modules/vite/bin/vite.js --config frontend/vite.config.ts",
     "devUrl": "http://localhost:5173",
-    "beforeBuildCommand": "node --max-old-space-size=4096 node_modules/typescript/bin/tsc -b tsconfig.json && node --max-old-space-size=4096 node_modules/vite/bin/vite.js build --config frontend/vite.config.ts",
+    "beforeBuildCommand": "bun node_modules/typescript/bin/tsc -b tsconfig.json && bun node_modules/vite/bin/vite.js build --config frontend/vite.config.ts",
     "frontendDist": "../frontend/dist"
   },
   "app": {

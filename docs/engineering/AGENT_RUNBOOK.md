@@ -15,7 +15,7 @@ Use this file before release, cleanup, or bug-fix work in this repo. It records 
 
 ## TE Identity
 
-- Workspace: `C:\Projects\Active\TE_Component_Inventory`
+- Workspace: `C:\Projects\Active\Inventory_Apps\TE\TE_Parts_Inventory`
 - GitHub repo: `https://github.com/Hassaan-ECE/TE_Component_Inventory`
 - Product name: `TE Lab Components Inventory`
 - Tauri identifier: `com.te.lab.components.inventory`
@@ -26,16 +26,20 @@ Use this file before release, cleanup, or bug-fix work in this repo. It records 
 
 ## Known Hiccups And Pivots
 
-### Broken Bun PowerShell Shim
+### Bun-Only JavaScript Runtime
 
-- Symptom: `bun run ...` can resolve to a stale PowerShell wrapper.
-- Use the repo launcher:
+- This workspace is maintained with Bun as the JavaScript runtime.
+- Do not require Node for normal project commands.
+- Use Bun directly from the repo root:
 
 ```powershell
-node scripts\run-bun.mjs run <script>
+bun install
+bun run <script>
 ```
 
-Known good version from the source clone: `1.3.13`.
+- Package scripts intentionally call direct `bun node_modules/...` tool entry points for Vite, ESLint, TypeScript, and Vitest. On the current Windows/Bun setup, the package-bin shim path can crash Bun before the tool starts.
+
+Current machine version verified with these scripts: `1.3.14`.
 
 ### NSIS User-Mapped Section Lock
 
@@ -74,10 +78,10 @@ https://github.com/Hassaan-ECE/TE_Component_Inventory/releases/latest/download/l
 ### Frontend
 
 ```powershell
-node scripts\run-bun.mjs run lint
-node scripts\run-bun.mjs run test
-node scripts\run-bun.mjs run build
-node scripts\run-bun.mjs audit
+bun run lint
+bun run test
+bun run build
+bun audit
 ```
 
 ### Git

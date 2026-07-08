@@ -10,7 +10,7 @@ This README is the current project entry point for setup, runtime behavior, shar
 
 ## Current Source Truth
 
-- Active workspace: `C:\Projects\Active\TE_Component_Inventory`
+- Active workspace: `C:\Projects\Active\Inventory_Apps\TE\TE_Parts_Inventory`
 - App name: `TE Lab Components Inventory`
 - Display name: `TE Lab Components Inventory v0.1.0`
 - Version source: `package.json`, `backend\Cargo.toml`, and `backend\tauri.conf.json`
@@ -92,7 +92,7 @@ This is the same compatibility projection as the ME app, with TE-specific identi
 ### Excel Export
 
 - `Export > Excel` uses a native save dialog.
-- Default filename: `TE_Component_Inventory_Export.xlsx`.
+- Default filename: `TE_Parts_Inventory_Export.xlsx`.
 - Export includes all entries, not only the visible filtered rows.
 - The workbook has exactly two sheets:
   - `Inventory` for active entries
@@ -170,31 +170,31 @@ The generated TE updater key currently has no password. Rotate it before broad d
 Install dependencies:
 
 ```powershell
-node scripts\run-bun.mjs install
+bun install
 ```
 
 Run the web UI:
 
 ```powershell
-node scripts\run-bun.mjs run dev
+bun run dev
 ```
 
 Run the Tauri desktop app:
 
 ```powershell
-node scripts\run-bun.mjs run dev:desktop
+bun run dev:desktop
 ```
 
 Build the frontend:
 
 ```powershell
-node scripts\run-bun.mjs run build
+bun run build
 ```
 
 Run frontend tests:
 
 ```powershell
-node scripts\run-bun.mjs run test
+bun run test
 ```
 
 Run the one-machine shared-sync smoke:
@@ -206,7 +206,7 @@ powershell -ExecutionPolicy Bypass -File scripts\smoke-sync-one-machine.ps1
 Build the Windows NSIS installer:
 
 ```powershell
-node scripts\run-bun.mjs run build:desktop
+bun run build:desktop
 ```
 
 Installer output:
@@ -220,10 +220,10 @@ backend\target\release\bundle\nsis\
 Before building a release candidate:
 
 ```powershell
-node scripts\run-bun.mjs run lint
-node scripts\run-bun.mjs run test
-node scripts\run-bun.mjs run build
-node scripts\run-bun.mjs audit
+bun run lint
+bun run test
+bun run build
+bun audit
 
 Push-Location backend
 cargo fmt -- --check
@@ -247,7 +247,7 @@ For signed updater releases, build with the updater private key available outsid
 $env:PATH = "$env:USERPROFILE\.bun\bin;$env:PATH"
 $env:TAURI_SIGNING_PRIVATE_KEY = (Get-Content -LiteralPath "$env:USERPROFILE\.tauri\te-component-inventory-updater.key" -Raw).Trim()
 $env:TAURI_SIGNING_PRIVATE_KEY_PASSWORD = ""
-node scripts\run-bun.mjs run build:desktop
+bun run build:desktop
 Remove-Item Env:\TAURI_SIGNING_PRIVATE_KEY
 Remove-Item Env:\TAURI_SIGNING_PRIVATE_KEY_PASSWORD
 ```
