@@ -131,6 +131,7 @@ This document maps the project files to their responsibilities. It covers tracke
 | Path | Handles |
 | --- | --- |
 | `docs/engineering/AGENT_RUNBOOK.md` | Project-specific runbook for release, cleanup, build traps, shared drive staging, and recurring fixes. |
+| `docs/engineering/PLANNED_IMPROVEMENTS.md` | Prioritized roadmap for read-only mode, conflict visibility UI, and shared media storage. |
 | `docs/engineering/FEOXDB_SYNC_MIGRATION_PLAN.md` | Compact design note for the FeOxDB operation-log sync architecture and shared layout. |
 | `docs/engineering/SYNC_RECOVERY_INVARIANTS.md` | Explicit recovery invariants for local outbox, markers, tombstones, snapshots, and sequence state. |
 | `docs/engineering/PROJECT_FOLDER_BREAKDOWN.md` | This file: annotated map of project folders and tracked files. |

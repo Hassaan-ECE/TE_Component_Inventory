@@ -1,8 +1,19 @@
 # Agent Runbook
 
-Last updated: 2026-06-09
+Last updated: 2026-07-08
 
 Use this file before release, cleanup, or bug-fix work in this repo. It records project-specific traps and repeatable validation commands. Current release state lives in `README.md`.
+
+## Planned Improvements
+
+Before implementing UX or sync enhancements, read `docs/engineering/PLANNED_IMPROVEMENTS.md`.
+
+Current priority order:
+
+1. Read-only mode by default with edit-attempt dialog and per-machine always-allow preference
+2. Shared operation compaction tuning and status surfacing
+3. Conflict visibility for stale overlapping edits
+4. Shared media under `shared/inventory/media/{entryUuid}/`
 
 ## Agent Rules
 

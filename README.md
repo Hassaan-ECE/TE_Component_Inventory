@@ -124,6 +124,8 @@ S:\Engineering\Public\Syed_Hassaan_Shah\InventoryApps\TE\
       snapshots\
       locks\
       backups\
+      media\          # planned: shared entry pictures
+        {entryUuid}\
 ```
 
 Keep the shared root obvious for users: place only the current installer executable at the TE root, and put updater metadata, signatures, checksums, previous installers, and support material under `release-support\` or `archive\`.
@@ -304,8 +306,19 @@ Only rename a user's local `inventory.feox` during stale-data testing after the 
 
 ## Open Work
 
+### Prioritized Improvements
+
+Detailed specs live in `docs/engineering/PLANNED_IMPROVEMENTS.md`.
+
+1. **Read-only mode by default** — each session starts in lookup-only mode unless the machine opted into **Always allow editing**. Any edit attempt shows a dialog: **Cancel**, **Enable editing for this session**, or **Always allow editing on this machine**. Read-only clients block mutations but still pull shared sync and can help compact old op files when they have no local outbox backlog.
+2. **Shared operation compaction** — old op files are already deleted after verified snapshots, but current thresholds retain ops for up to 24 hours or 1,000 files. Tune for lab scale, expose op count in shared status, and use read-only sync clients as safe compaction publishers.
+3. **Conflict visibility** — surface backend `SyncConflictRecord` data in the UI so users can see when another machine won an overlapping edit and which fields kept the winning value. Different-field merges stay silent.
+4. **Shared media storage** — store pictures under `shared/inventory/media/{entryUuid}/` instead of machine-local paths only, so previews work on every client when the shared workspace is available.
+
+### Release And Maintenance
+
 - Run full two-machine create/update/archive/delete sync smoke before the first TE release.
 - Decide whether TE needs custom fields beyond the current compatibility projection.
 - Replace the cloned icon with a TE-specific icon if desired.
-- Add conflict UI, locked-file smoke, and shared media storage when needed.
+- Add locked-file smoke coverage for shared snapshot publish when needed.
 - Benchmark real TE inventory size for search, sort, startup, sync, and table rendering.
